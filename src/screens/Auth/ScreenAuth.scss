@@ -1,0 +1,82 @@
+@import "../../styles/mixin.scss";
+@import "../../styles/colors.scss";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+$break-small: 850px;
+$open-sans: 'Open Sans', sans-serif;
+
+.auth-component {
+    @include flex;
+    @include flex-column;
+    background-image: linear-gradient(to bottom, $secondSplash, $mainSplash);
+    width: 100%;
+    height: 100%;
+    font-family: $open-sans;
+
+    .input-container {
+        width: 50%;
+        min-width: 250px;
+        margin: 0 auto;
+    }
+
+    .logo-container {
+        width: 100%;
+        min-width: 400px;
+        max-width: 600px;
+        text-align: center;
+        margin-bottom: 4rem;
+
+        .text-color {
+            color: white;
+        }
+        img {
+            max-width: 85%;
+            width: 85%;
+            height: auto;
+        }
+    }
+
+    .input-section {
+        width: 100%;
+        margin-bottom: 1rem;
+
+        .input-label {
+            text-transform: uppercase;
+            color: black;
+        }
+        .input-field {
+            width: 100%;
+            height: 2rem;
+            border: 0;
+            border-bottom: 1px solid white;
+            background: transparent;
+            outline: none;
+            font-weight: 300;
+            font-size: 1rem;
+            color: white;
+        }
+    }
+
+    .buttons-container {
+        display: flex;
+        margin-top: 1.5rem;
+        @media screen and (max-width: $break-small) {
+            display: inherit;
+        }
+        .button {
+            @include button-main;
+            width: 45%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 1rem;
+            max-width: 350px;
+            min-width: 200px;
+            background-color: white;
+            transition: 0.3s transform ease-in-out, 0.2s font-weight ease-in-out;
+            color: $secondSplash;
+            &:hover {
+                transform: scale(1.1);
+                font-weight: bold;
+            }
+        }
+    }
+}

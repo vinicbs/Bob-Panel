@@ -1,0 +1,108 @@
+@import "./mixin.scss";
+@import "./colors.scss";
+
+.main {
+    width:100%;
+    height: 100%;
+}
+
+.main-content {
+    text-align: center;
+    //margin-top: 5rem;
+    //margin-bottom: 5rem;
+
+    > .content-header {
+        width: 100%;
+        position: relative;
+        margin-bottom: 2rem;
+
+        &.fluid {
+            width: 66%;
+        }
+    }
+}
+
+.scroll-content {
+    overflow: scroll;
+    overflow-x: hidden;
+    /* Track */
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent; 
+    }
+        
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: transparent; 
+    }
+        
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: transparent; 
+    }
+    &:hover {
+        
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+        /* Track */
+        &::-webkit-scrollbar-track {
+            border-radius: 0.8rem;
+        }
+            
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 0.8rem;
+        }
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+    }
+}
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.min-600 {
+    width: 66%;
+    min-width: 600px;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.logo-container {
+    width: 40%;
+    text-align: center;
+    margin-bottom: 4rem;
+
+    img {
+        max-width: 85%;
+        width: 85%;
+        height: auto;
+    }
+}
+
+.loading {
+    @include flex;
+}
+
+.button {
+    @include button-main;
+    background-color: $secondSplash;
+    color: white;
+    &:hover {
+        background-color: $mainSplash;
+        //font-weight: bold;
+    }
+}

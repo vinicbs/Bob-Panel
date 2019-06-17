@@ -1,0 +1,48 @@
+@mixin background-cover {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+@mixin flex {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-column {
+    flex-direction: column;
+}
+
+@mixin flex-row {
+    flex-direction: row;
+}
+
+@mixin basic-toast {
+    font-family: 'Averta', sans-serif;
+    border-radius: 1rem;
+    padding: 1.25rem;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    max-height: 40px;
+    display: -webkit-inline-box;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+@mixin button-main {
+    display: block;
+    margin: 0 0.25rem;
+    padding: 0.75rem;
+    border: 0;
+    border-radius: 0.8rem;
+    line-height: 1rem;
+    font-size: 0.9rem;
+    font-family: 'Averta';
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0px 0px 0.8rem rgba(50, 50, 50, 0.3);
+    outline: 0;
+    cursor: pointer;
+}

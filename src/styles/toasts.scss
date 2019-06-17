@@ -1,0 +1,23 @@
+@import "./mixin.scss";
+@import "./colors.scss";
+
+.toast-success {
+    @include basic-toast;
+    background: white;
+}
+
+.toast-error {
+    @include basic-toast;
+    background: white;
+}
+
+.toast-info {
+    @include basic-toast;
+    background: white;
+}
+
+.toast-login {
+    @include basic-toast;
+    justify-content: center;
+    background: white;
+}
