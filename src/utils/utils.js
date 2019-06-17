@@ -12,7 +12,6 @@ class Utils {
 
 
     checkForErrors(that, element) {
-        console.log('oi')
         if(!element.success) {
             toast.error(`Erro: ${element.message}`, {
                 className: 'toast-error'

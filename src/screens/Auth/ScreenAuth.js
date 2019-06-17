@@ -59,7 +59,6 @@ class ScreenAuth extends React.Component {
         event.preventDefault();
 
         let user = null;
-        console.log(this.state)
         if (!this.state.email || !this.state.password
             || !this.state.confirmPassword || !this.state.name
             || !this.state.phone) { return toast.error('Preencha todos os campos') }
@@ -69,7 +68,6 @@ class ScreenAuth extends React.Component {
         this.setState({ loading: true });
         try {
             user = await Api.register(this.state.email, this.state.password, this.state.name, this.state.phone, this.state.country);
-            console.log(user);
             if (Utils.checkForErrors(this, user.data)) {
                 return this.setState({ loading: false });
             }
@@ -82,7 +80,6 @@ class ScreenAuth extends React.Component {
     }
 
     handleKeyPress = (event) => {
-
         if (event.key === 'Enter') {
             if (this.state.register) {
                 this.onRegisterSubmit(event);

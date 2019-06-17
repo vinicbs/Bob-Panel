@@ -8,3 +8,5 @@
 /build
 # misc
 npm-debug.log*
+# local constants
+package-lock.json
