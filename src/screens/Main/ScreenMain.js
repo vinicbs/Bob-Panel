@@ -1,6 +1,6 @@
 import React from 'react';
 
-import mainLogo from '../../assets/images/bob-blue-logo.png';
+import mainLogo from '../../assets/images/LOGO.png';
 import './ScreenMain.scss'
 
 

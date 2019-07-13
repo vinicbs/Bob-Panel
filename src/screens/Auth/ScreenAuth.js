@@ -9,7 +9,7 @@ import { BounceLoader } from 'react-spinners';
 import { ToastContainer, toast } from 'react-toastify';
 import ReactPhoneInput from 'react-phone-input-2'
 
-import mainLogo from '../../assets/images/bob-blue-logo.png';
+import mainLogo from '../../assets/images/LOGO.png';
 import './ScreenAuth.scss'
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-phone-input-2/dist/style.css'
