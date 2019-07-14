@@ -36,6 +36,7 @@ class Api {
         });
     }
 
+    // ### Authentication ###
     login(email, password) {
         return this.api.get(`users/signin?email=${email}&password=${password}`);
     }
@@ -63,6 +64,24 @@ class Api {
         await localStorage.setItem('userToken', token);
         this.api.defaults.headers.common['x-access-token'] = token;
         this.api.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
+    }
+
+    // ### Devices ###
+    devicesList(page, pageSize) {
+        return this.api.get(`devices/list?page=${page}&pageSize=${pageSize}`);
+    }
+
+    deviceDelete(id) {
+        return this.api.get(`devices/delete?id=${id}`);
+    }
+
+    deviceSave(id, name, imei) {
+        let body = {
+            id,
+            name,
+            imei
+        }
+        return this.api.post('devices/save', body);
     }
 
 

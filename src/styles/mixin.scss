@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+$break-small: 850px;
+$open-sans: "Open Sans", sans-serif;
+
 @mixin background-cover {
     background-position: center;
     background-size: cover;
@@ -38,7 +42,7 @@
     border-radius: 0.8rem;
     line-height: 1rem;
     font-size: 0.9rem;
-    font-family: 'Averta';
+    font-family: $open-sans;
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;

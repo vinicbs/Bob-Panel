@@ -1,0 +1,155 @@
+@import "./mixin.scss";
+@import "./colors.scss";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+$break-small: 850px;
+$open-sans: "Open Sans", sans-serif;
+
+.modal {
+    font-family: $open-sans;
+
+    .modal-dialog {
+        max-width: 800px;
+
+        &.modal-dialog-90w {
+            width: 90%;
+            max-width: 90%;
+            height: 90%;
+            min-height: 90%;
+
+            .modal-content {
+                height: 100%;
+            }
+
+            .modal-header,
+            .modal-body,
+            .modal-footer {
+                padding: 1rem 1.5rem;
+            }
+
+            .input-group-section {
+                margin-top: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .modal-content {
+            border: 0;
+            border-radius: 1rem;
+            overflow: hidden;
+
+            .modal-title {
+                font-size: 1.4rem;
+                color: $lightGrey;
+            }
+
+            .modal-body {
+                font-size: 0.8rem;
+                min-height: 280px;
+                color: $lightGrey;
+            }
+
+            .close {
+                outline: 0;
+                font-size: 2rem;
+                transition: 0.3s transform ease-in-out, 0.2s font-weight ease-in-out;
+
+                &:hover {
+                    transform: scale(1.5);
+                    color: $redButton;
+                    cursor: pointer;
+                }
+            }
+
+            .modal-card-data {
+                width: calc(100% - 184px);
+                margin-left: 24px;
+            }
+            .modal-input-group {
+                position: relative;
+                margin: 1rem 0;
+
+                > label {
+                    position: absolute;
+                    font-size: 0.9rem;
+                    color: $mainSplash;
+                }
+                > input[type="text"],
+                > textarea {
+                    margin-top: 1.2rem;
+                    width: 100%;
+                    border: 0;
+                    border-bottom: 1px solid $whiteGrey;
+                    font-family: "Averta";
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+                    color: $lightGrey;
+                    outline: 0;
+
+                    &::placeholder {
+                        text-transform: none;
+                        font-style: italic;
+                        color: $whiteGrey;
+                    }
+                }
+                .modal-input-items {
+                    padding-left: 0;
+                    list-style: none;
+
+                    .modal-input-item {
+                        display: inline-block;
+                        position: relative;
+                        margin: 0.25rem;
+                        margin-left: 0;
+                        padding: 0.25rem 2rem 0.25rem 1.2rem;
+                        border-radius: 0.8rem;
+                        box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.35);
+                        font-size: 0.8rem;
+
+                        > svg {
+                            position: absolute;
+                            top: 0.4rem;
+                            right: 0.8rem;
+                            color: $lightGrey;
+
+                            &:hover {
+                                cursor: pointer;
+                                color: $mainSplash;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .button-group {
+        display: flex;
+        @media screen and (max-width: $break-small) {
+            display: initial;
+        }
+        .button {
+            @include button-main;
+            width: 45%;
+            margin-top: 0.5rem;
+            margin-left: 0.5rem;
+            max-width: 350px;
+            min-width: 150px;
+            transition: 0.3s transform ease-in-out, 0.2s font-weight ease-in-out;
+            color: white;
+            font-family: $open-sans;
+            &.delete {
+                background-color: $redButton;
+            }
+            &.save {
+                background-color: $greenButton;
+            }
+            &.return {
+                background-color: $returnButton;
+            }
+            &:hover {
+                transform: scale(1.1);
+                font-weight: bold;
+            }
+        }
+    }
+}

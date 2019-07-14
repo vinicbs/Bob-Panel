@@ -5,6 +5,10 @@ $break-small: 850px;
 $open-sans: 'Open Sans', sans-serif;
 
 .auth-component {
+    @media screen and (max-width: $break-small) {
+        margin-top: 50px;
+        margin-bottom: 70px; 
+    }    
     @include flex;
     @include flex-column;
     background-image: white;
@@ -20,7 +24,7 @@ $open-sans: 'Open Sans', sans-serif;
 
     .logo-container {
         width: 100%;
-        min-width: 400px;
+        min-width: 300px;
         max-width: 600px;
         text-align: center;
         margin-bottom: 4rem;

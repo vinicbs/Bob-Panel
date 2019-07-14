@@ -1,0 +1,96 @@
+@import "../../styles/mixin.scss";
+@import "../../styles/colors.scss";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+$break-small: 850px;
+$open-sans: 'Open Sans', sans-serif;
+.header {
+    @include flex;
+    position: sticky;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4rem;
+    background: $secondSplash;
+    padding: 0.5rem 0;
+    .header-abs-item {
+        position: absolute;
+        top: 0;
+        height: 2.4rem;
+        margin: 0.8rem 0;
+
+        &.left {
+            left: 2rem;
+        }
+        &.right {
+            right: 2rem;
+        }
+        &.leave {
+            margin-top: auto;
+            padding: 5px;
+        }
+
+        &.logo {
+            opacity: 1;
+            width: 5rem;
+
+            img {
+                width: auto;
+                height: 120%;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .header-menu {
+        @include flex;
+        height: 100%;
+
+        .header-item {
+            display: inline-block;
+            padding: 15px;
+            font-family: $open-sans;
+            font-size: 1.2rem;
+            font-weight: normal;
+            text-align: center;
+            //text-transform: lowercase;
+            text-decoration: none;
+            color: white;
+            height: 100%;
+            justify-content: center;
+            border-radius: 1rem;
+            transition: 0.3s background-color ease-in-out, 0.3s box-shadow ease-in-out, 0.1s padding ease-in-out,
+                0.1s font-weight ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                font-weight: bold;
+                background-color: $secondSplash;
+            }
+            &:after {
+                display: block;
+                height: 0;
+                content: attr(title);
+                font-weight: bold;
+                overflow: hidden;
+                visibility: hidden;
+            }
+        }
+    }
+    .mobile-menu {
+        .menu-item {
+            border-bottom: 1px solid #ddd;
+            display: block;
+            padding: 0.7rem 15px;
+            color: $secondSplash;
+            text-decoration: none;
+            &:hover {
+                background-color: $secondSplash;
+                color: white;
+            }
+        }
+
+    }
+}

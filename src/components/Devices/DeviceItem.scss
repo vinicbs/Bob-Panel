@@ -1,0 +1,152 @@
+@import "../../styles/mixin.scss";
+@import "../../styles/colors.scss";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+$break-small: 850px;
+$open-sans: "Open Sans", sans-serif;
+
+.device-item {
+    width: 100%;
+    border-width: 0.2rem 0.2rem 0;
+    border-radius: 8px;
+    box-shadow: 0px 0px 0.8rem rgba(50, 50, 50, 0.3);
+    margin-bottom: 4%;
+
+    .device-item-header {
+        font-size: 18px;
+        color: $lightGrey;
+        display: flex;
+        justify-content: space-between;
+        .device-item-name {
+            margin: 1.5%;
+        }
+        .device-item-icon {
+            width: 10%;
+            max-width: 40px;
+            margin: 1.5%;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    .device-item-body {
+        @include flex;
+        @include flex-column;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 0.1rem solid $whiteGrey2;
+        width: 100%;
+        .device-item-input-group {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            .device-item-input-section {
+                display: flex;
+                width: 100%;
+                margin: 1rem;
+                justify-content: space-between;
+                align-items: center;
+
+                .device-item-input-label {
+                    margin-top: 6px;
+                    text-transform: uppercase;
+                    color: $lightGrey;
+                }
+                .device-item-input-field {
+                    width: 80%;
+                    border: 0;
+                    border-bottom: 1px solid $whiteGrey;
+                    background: transparent;
+                    outline: none;
+                    font-size: 1rem;
+                    color: $lightGrey;
+                }
+            }
+        }
+        .device-item-contacts-box {
+            width: 90%;
+            border-width: 0.2rem 0.2rem 0;
+            border-radius: 8px;
+            box-shadow: 0px 0px 0.8rem rgba(50, 50, 50, 0.4);
+            margin: 1rem;
+            .device-item-contacts-box-header {
+                font-size: 18px;
+                color: $lightGrey;
+                display: flex;
+                justify-content: space-between;
+                .device-item-contacts-box-header-name {
+                    margin: 1.5%;
+                }
+                .device-item-contacts-box-header-icon {
+                    width: 10%;
+                    max-width: 40px;
+                    margin: 1.5%;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .device-item-buttons-container {
+            display: flex;
+            width: 80%;
+            @media screen and (max-width: $break-small) {
+                display: initial;
+            }
+            .device-item-button {
+                @include button-main;
+                width: 45%;
+                margin: 1rem;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 350px;
+                min-width: 200px;
+                transition: 0.3s transform ease-in-out, 0.2s font-weight ease-in-out;
+                color: $lightGrey;
+                background-color: white;
+                font-family: $open-sans;
+                &:hover {
+                    transform: scale(1.1);
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    .device-item-footer {
+        align-items: center;
+        justify-content: space-between;
+        border-top: 0.1rem solid $whiteGrey2;
+        width: 100%;
+        @media screen and (max-width: $break-small) {
+            display: inherit;
+        }
+        .device-item-buttons-container {
+            display: flex;
+            @media screen and (max-width: $break-small) {
+                display: inherit;
+            }
+            .device-item-button {
+                @include button-main;
+                width: 45%;
+                margin: 1.5%;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 350px;
+                min-width: 200px;
+                transition: 0.3s transform ease-in-out, 0.2s font-weight ease-in-out;
+                color: white;
+                background-color: $whiteGrey2;
+                font-family: $open-sans;
+                &.delete {
+                    background-color: $redButton;
+                }
+                &.save {
+                    background-color: $greenButton;
+                }
+                &:hover {
+                    transform: scale(1.1);
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

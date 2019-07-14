@@ -6,9 +6,10 @@ import Api from './utils/api'
 //### SCREENS ###
 import ScreenAuth from './screens/Auth/ScreenAuth'
 import ScreenMain from './screens/Main/ScreenMain'
+import Header from './components/Header/Header'
 
 import './App.scss';
-//import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const renderMergedProps = (component, ...rest) => {
 	const finalProps = Object.assign({}, ...rest);
@@ -113,6 +114,10 @@ class App extends Component {
 							onFormSubmit={this.onUserLogin}
 							logged={this.state.logged}
 							loading={this.state.loading} />
+						<Header
+							onUserLogout={this.onUserLogout}
+							logged={this.state.logged}
+						/>
 						<PrivateRoute
 							exact path={Routes.main}
 							component={ScreenMain}
