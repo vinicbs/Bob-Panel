@@ -3,6 +3,7 @@ import Api from '../../utils/api'
 import { ToastContainer, toast } from 'react-toastify';
 import BottomScrollListener from 'react-bottom-scroll-listener'
 import { ClipLoader } from 'react-spinners'
+import { Button } from 'react-bootstrap'
 
 import DeviceItem from '../../components/Devices/DeviceItem'
 import './ScreenMain.scss'
@@ -23,7 +24,9 @@ class ScreenMain extends React.Component {
             page: 1,
             loading: false,
             reachedEnd: false,
-            error: 0
+            error: 0,
+
+            showNewDevice: false
         };
     }
 
@@ -96,6 +99,12 @@ class ScreenMain extends React.Component {
                             </div>
                         )}
                         <div className="devices-list">
+                            <Button
+                                className='device-list-button save'
+                                as="input" type="submit" value="Adicionar Dispositivo"
+                                disabled={loading}
+                                onClick={this.handleShowNewDeviceModal}
+                            />
                             {this.renderDevices()}
                         </div>
                         <ToastContainer position='bottom-left' />
@@ -120,6 +129,10 @@ class ScreenMain extends React.Component {
             this.fetchData(1, devicesPageSize);
         }
         this.setState({ loading: false });
+    }
+
+    handleShowNewDeviceModal = () => {
+        this.setState({ showNewDevice: true })
     }
 }
 

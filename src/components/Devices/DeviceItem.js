@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal';
 import { Collapse } from 'react-collapse';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import NewDeviceModal from './NewDeviceModal';
 //import Routes from '../../utils/routes'
 
 import Api from '../../utils/api'
@@ -142,6 +143,8 @@ class DeviceItem extends React.Component {
                         </div>
                     </Modal.Footer>
                 </Modal>
+
+                <NewDeviceModal/>
             </div>
         )
     }
