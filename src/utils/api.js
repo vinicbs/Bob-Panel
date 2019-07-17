@@ -84,6 +84,26 @@ class Api {
         return this.api.post('devices/save', body);
     }
 
+    // ### Contacts ###
+    contactsList(deviceId) {
+        return this.api.get(`contacts/list/all?device_id=${deviceId}`);
+    }
+
+    contactDelete(id) {
+        return this.api.get(`contacts/delete?id=${id}`);
+    }
+
+    contactSave(id, device_id, name, email, message, phone) {
+        let body = {
+            id,
+            device_id,
+            name,
+            email,
+            message,
+            phone
+        }
+        return this.api.post('contacts/save', body);
+    }
 
 }
 

@@ -123,6 +123,11 @@ class App extends Component {
 							component={ScreenMain}
 							logged={this.state.logged}
 						/>
+						<PrivateRoute
+							exact path={Routes.devices}
+							component={ScreenMain}
+							logged={this.state.logged}
+						/>
 					</div>
 				</BrowserRouter>
 			</div>

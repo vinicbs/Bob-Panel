@@ -6,6 +6,7 @@ import { ClipLoader } from 'react-spinners'
 import { Button } from 'react-bootstrap'
 
 import DeviceItem from '../../components/Devices/DeviceItem'
+import NewDeviceModal from '../../components/Devices/NewDeviceModal';
 import './ScreenMain.scss'
 import Utils from '../../utils/utils';
 
@@ -83,6 +84,7 @@ class ScreenMain extends React.Component {
     }
 
     render() {
+        console.log(this.state.showNewDevice);
         const { loading } = this.state
         return (
             <BottomScrollListener onBottom={this.reachedBottomScroll} >
@@ -108,15 +110,24 @@ class ScreenMain extends React.Component {
                             {this.renderDevices()}
                         </div>
                         <ToastContainer position='bottom-left' />
+                        <NewDeviceModal
+                            showNewDeviceModal={this.state.showNewDevice}
+                            closeNewDeviceModal={this.handleCloseNewDeviceModal}
+                            addNewDevice={this.handleRefreshDevice} />
                     </div>
                 )}
             </BottomScrollListener>
         )
     }
 
+    handleRefreshDevice = () => {
+        this.setState({ devices: [], page: 1 });
+        this.fetchData(1, devicesPageSize);
+    }
+
     handleDeviceSave = async () => {
-        this.setState({ devices: [], page: 1 })
-        this.fetchData(1, devicesPageSize)
+        this.setState({ devices: [], page: 1 });
+        this.fetchData(1, devicesPageSize);
     }
 
     handleDeviceDelete = async (id) => {
@@ -132,7 +143,11 @@ class ScreenMain extends React.Component {
     }
 
     handleShowNewDeviceModal = () => {
-        this.setState({ showNewDevice: true })
+        this.setState({ showNewDevice: true });
+    }
+
+    handleCloseNewDeviceModal = () => {
+        this.setState({ showNewDevice: false });
     }
 }
 

@@ -7,9 +7,9 @@ if (hostname === 'localhost') {
     environment = 'local';
 } else if (hostname === 'bob-panel-dev.herokuapp.com') {
     environment = 'dev';
-} else if (hostname === 'bob-panel-stag.herokuapp.com') {
+} else if (hostname === 'bob-web-stag.herokuapp.com') {
     environment = 'stag';
-} else if (hostname === 'bob-panel.herokuapp.com') {
+} else if (hostname === 'bob-web.herokuapp.com') {
     environment = 'prod';
 }else {
     environment = process.env.NODE_ENV;

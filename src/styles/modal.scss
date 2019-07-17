@@ -32,6 +32,29 @@ $open-sans: "Open Sans", sans-serif;
             }
         }
 
+        &.modal-dialog-30w {
+            min-height: 400px;
+            height: 40%;
+            @media screen and (max-width: $break-small) {
+                height: 90%;
+            }
+
+            .modal-content {
+                height: 100%;
+            }
+
+            .modal-header,
+            .modal-body,
+            .modal-footer {
+                padding: 1rem 1.5rem;
+            }
+
+            .input-group-section {
+                margin-top: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
         .modal-content {
             border: 0;
             border-radius: 1rem;
@@ -44,7 +67,7 @@ $open-sans: "Open Sans", sans-serif;
 
             .modal-body {
                 font-size: 0.8rem;
-                min-height: 280px;
+                //min-height: 280px;
                 color: $lightGrey;
             }
 
@@ -61,60 +84,40 @@ $open-sans: "Open Sans", sans-serif;
             }
 
             .modal-card-data {
-                width: calc(100% - 184px);
+                //width: calc(100% - 184px);
                 margin-left: 24px;
             }
             .modal-input-group {
-                position: relative;
-                margin: 1rem 0;
-
-                > label {
-                    position: absolute;
-                    font-size: 0.9rem;
-                    color: $mainSplash;
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                @media screen and (max-width: $break-small) {
+                    display: initial;
                 }
-                > input[type="text"],
-                > textarea {
-                    margin-top: 1.2rem;
+                .modal-input-section {
+                    display: flex;
                     width: 100%;
-                    border: 0;
-                    border-bottom: 1px solid $whiteGrey;
-                    font-family: "Averta";
-                    font-size: 1rem;
-                    line-height: 1.5rem;
-                    color: $lightGrey;
-                    outline: 0;
-
-                    &::placeholder {
-                        text-transform: none;
-                        font-style: italic;
-                        color: $whiteGrey;
+                    margin: 1rem;
+                    align-items: center;
+                    @media screen and (max-width: $break-small) {
+                        justify-content: space-between;
                     }
-                }
-                .modal-input-items {
-                    padding-left: 0;
-                    list-style: none;
-
-                    .modal-input-item {
-                        display: inline-block;
-                        position: relative;
-                        margin: 0.25rem;
-                        margin-left: 0;
-                        padding: 0.25rem 2rem 0.25rem 1.2rem;
-                        border-radius: 0.8rem;
-                        box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.35);
-                        font-size: 0.8rem;
-
-                        > svg {
-                            position: absolute;
-                            top: 0.4rem;
-                            right: 0.8rem;
-                            color: $lightGrey;
-
-                            &:hover {
-                                cursor: pointer;
-                                color: $mainSplash;
-                            }
+                    .modal-input-label {
+                        margin-top: 6px;
+                        text-transform: uppercase;
+                        color: $lightGrey;
+                    }
+                    .modal-input-field {
+                        margin-left: 3%;
+                        width: 80%;
+                        border: 0;
+                        border-bottom: 1px solid $whiteGrey;
+                        background: transparent;
+                        outline: none;
+                        font-size: 1rem;
+                        color: $lightGrey;
+                        &.phone {
+                            border-bottom: 1px solid white;
                         }
                     }
                 }

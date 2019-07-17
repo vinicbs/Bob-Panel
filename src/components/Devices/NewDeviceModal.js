@@ -26,32 +26,33 @@ class NewDeviceModal extends React.Component {
         return (
             <Modal
                 show={this.props.showNewDeviceModal}
-                onHide={this.handleClose}
-                dialogClassName="modal-dialog-90w"
+                onHide={this.props.closeNewDeviceModal}
+                dialogClassName="modal-dialog-30w"
                 className="modal">
                 <Modal.Header closeButton>
                     <Modal.Title className="modal-title">Novo dispositivo</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div>
-                        <div className="modal-input-group modal-input-formation">
-                            <label>nome</label>
-                            <TextareaAutosize
-                                style={{ resize: 'none' }}
-                                maxRows={1}
-                                value={this.state.name}
-                                onChange={e => this.setState({ name: e.target.value })}
-                                placeholder="digite aqui o nome do dispositivo..."
-                                async />
-                            <br></br><br></br>
-                            <label>imei</label>
-                            <TextareaAutosize
-                                style={{ resize: 'none' }}
-                                maxRows={1}
-                                value={this.state.imei}
-                                onChange={e => this.setState({ imei: e.target.value })}
-                                placeholder="digite aqui o código imei do dispositivo..."
-                                async />
+                        <div className="modal-input-group">
+                            <div className="modal-input-section">
+                                <label className='modal-input-label'>Nome: </label>
+                                <input
+                                    type='text'
+                                    className='modal-input-field'
+                                    value={this.state.name}
+                                    onChange={(event) => this.setState({ name: event.target.value })}
+                                />
+                            </div>
+                            <div className="modal-input-section">
+                                <label className='modal-input-label'>IMEI: </label>
+                                <input
+                                    type='text'
+                                    className='modal-input-field'
+                                    value={this.state.imei}
+                                    onChange={(event) => this.setState({ imei: event.target.value })}
+                                />
+                            </div>
                         </div>
                     </div>
                 </Modal.Body>
@@ -61,8 +62,26 @@ class NewDeviceModal extends React.Component {
                     </div>
                 </Modal.Footer>
 
-            </Modal>
+            </Modal >
         )
+    }
+
+    handleSaveDevice = async () => {
+        const { name, imei } = this.state;
+
+        //Inputs validator
+        let data = []
+        data.push({ name: name ? name : '' });
+        data.push({ imei: imei ? imei : '' });
+
+        if (!Utils.elementsValidator(data)) { return; }
+
+        //API save
+        let resp = await Api.deviceSave('', name, imei);
+        if (Utils.checkForErrors(this, resp.data)) { return; }
+
+        this.props.closeNewDeviceModal();
+        this.props.addNewDevice();
     }
 }
 

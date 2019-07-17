@@ -2,14 +2,16 @@ import React from 'react';
 
 //import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap'
+import { toast } from 'react-toastify';
 import Modal from 'react-bootstrap/Modal';
 import { Collapse } from 'react-collapse';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import NewDeviceModal from './NewDeviceModal';
+import { ClipLoader } from 'react-spinners'
 //import Routes from '../../utils/routes'
 
 import Api from '../../utils/api'
 import Utils from '../../utils/utils'
+import ContactItem from '../Contacts/ContactItem'
 
 import './DeviceItem.scss'
 import '../../styles/modal.scss'
@@ -30,6 +32,7 @@ class DeviceItem extends React.Component {
             openDevice: false,
             openContacts: false,
             showDelete: false,
+            loading: false
         }
     }
 
@@ -45,9 +48,19 @@ class DeviceItem extends React.Component {
     };
 
     render() {
-        const { openDevice, openContacts, nameDisplay } = this.state;
+        const { openDevice, openContacts, nameDisplay, loading } = this.state;
         return (
             <div className="device-item">
+                {loading && (
+                    <div className="loadingScreen">
+                        <ClipLoader
+                            size={60}
+                            sizeUnit={"px"}
+                            color={"#ED3348"}
+                            loading={loading}
+                        />
+                    </div>
+                )}
                 <div className="device-item-header">
                     <div className="device-item-name">
                         {nameDisplay}
@@ -83,12 +96,20 @@ class DeviceItem extends React.Component {
                                 <div className="device-item-contacts-box-header-name">
                                     Contatos
                                 </div>
-                                <div className="device-item-contacts-box-header-icon" onClick={this.handleOpenContacts}>
+                                <div className="device-item-contacts-box-header-icon" onClick={this.fetchContacts}>
                                     {openContacts ? <FontAwesomeIcon icon='caret-up' /> : <FontAwesomeIcon icon='caret-down' />}
                                 </div>
                             </div>
                             <Collapse isOpened={openContacts}>
-                                Contatos
+                                <div className="device-item-contacts-box-addNew">
+                                    <Button
+                                        className='device-item-contacts-box-addNew-button'
+                                        as="input" type="submit" value="Adicionar novo contato"
+                                        disabled={this.props.loading}
+                                        onClick={this.handleNewContact}
+                                    />
+                                </div>
+                                {this.renderContacts()}
                             </Collapse>
                         </div>
                         <div className='device-item-buttons-container'>
@@ -143,8 +164,6 @@ class DeviceItem extends React.Component {
                         </div>
                     </Modal.Footer>
                 </Modal>
-
-                <NewDeviceModal/>
             </div>
         )
     }
@@ -156,7 +175,7 @@ class DeviceItem extends React.Component {
 
     handleOpenContacts = () => {
         const openContacts = !this.state.openContacts;
-        this.setState({ openContacts: openContacts })
+        this.setState({ openContacts: openContacts });
     }
 
     handleSaveDevice = async () => {
@@ -188,6 +207,82 @@ class DeviceItem extends React.Component {
         this.props.onDeviceDelete(this.state.id);
         this.handleCloseDelete();
     }
+
+    // ### Contacts ###
+    fetchContacts = async () => {
+        if (!this.state.openContacts) {
+            this.setState({ loading: true });
+            try {
+                let response = await Api.contactsList(this.state.id)
+
+                //Check for errors
+                if (Utils.checkForErrors(this, response.data)) { return; }
+
+                let contactsList = response.data.data;
+                this.setState({ contacts: contactsList }, () => {
+                    this.setState({ loading: false })
+                    this.handleOpenContacts();
+                })
+
+            } catch (err) {
+                console.log(err);
+                toast.error('Aconteceu algo inesperado, recarregue a pagina');
+            }
+        } else {
+            this.handleOpenContacts();
+        }
+    }
+
+    renderContacts = () => {
+        const contacts = this.state.contacts.map((contact) => {
+            return (
+                <ContactItem
+                    onContactDelete={this.handleContactDelete}
+                    onContactSave={this.handleContactSave}
+                    onCloseEvent={this.fetchContacts}
+                    deviceId={this.state.id}
+                    key={contact.id}
+                    item={contact}
+                />
+            );
+        });
+        return contacts
+    }
+
+    handleNewContact = () => {
+        const newContact = {
+            id: 0,
+            title: '',
+            fullText: '',
+            pictureUrl: '',
+            createdAt: '',
+        }
+        let contacts = this.state.contacts;
+        this.setState({ contacts: [...contacts, newContact] })
+    }
+
+    handleContactSave = () => {
+        this.setState({ contacts: [] });
+        this.fetchContacts();
+    }
+
+    handleContactDelete = async (id) => {
+        this.setState({ loading: true });
+        try {
+            let del = await Api.contactDelete(id);
+            if (Utils.checkForErrors(this, del.data)) { return; }
+
+            if (del) {
+                this.setState({ contacts: [] });
+                this.fetchContacts();
+            }
+            this.setState({ loading: false });
+        } catch (err) {
+            console.log(err);
+            toast.error('Aconteceu algo inesperado, recarregue a pagina');
+        }
+    }
+
 }
 
 export default DeviceItem;

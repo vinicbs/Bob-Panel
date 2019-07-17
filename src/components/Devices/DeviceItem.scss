@@ -39,12 +39,18 @@ $open-sans: "Open Sans", sans-serif;
             display: flex;
             justify-content: space-between;
             width: 100%;
+            @media screen and (max-width: $break-small) {
+                display: inline;
+                width: 85%;
+            }
             .device-item-input-section {
                 display: flex;
                 width: 100%;
                 margin: 1rem;
-                justify-content: space-between;
                 align-items: center;
+                @media screen and (max-width: $break-small) {
+                    justify-content: space-between;
+                }
 
                 .device-item-input-label {
                     margin-top: 6px;
@@ -52,6 +58,7 @@ $open-sans: "Open Sans", sans-serif;
                     color: $lightGrey;
                 }
                 .device-item-input-field {
+                    margin-left: 3%;
                     width: 80%;
                     border: 0;
                     border-bottom: 1px solid $whiteGrey;
@@ -82,6 +89,36 @@ $open-sans: "Open Sans", sans-serif;
                     margin: 1.5%;
                     &:hover {
                         cursor: pointer;
+                    }
+                }
+            }
+            .device-item-contacts-box-addNew {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-top: 0.1rem solid $whiteGrey2;
+                .device-item-contacts-box-addNew-button {
+                    display: block;
+                    border: 0;
+                    border-radius: 0.8rem;
+                    font-family: $open-sans;
+                    text-align: center;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    box-shadow: 0px 0px 0.8rem rgba(50, 50, 50, 0.3);
+                    font-size: 13px;
+                    width: 45%;
+                    margin: 1%;
+                    min-width: 200px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    transition: 0.3s transform ease-in-out, 0.2s font-weight ease-in-out;
+                    color: white;
+                    background-color: $greenButton;
+                    font-family: $open-sans;
+                    &:hover {
+                        transform: scale(1.1);
+                        font-weight: bold;
                     }
                 }
             }
@@ -123,6 +160,8 @@ $open-sans: "Open Sans", sans-serif;
             display: flex;
             @media screen and (max-width: $break-small) {
                 display: inherit;
+                border-bottom: 0.3rem solid white;
+                border-radius: 0.8rem;
             }
             .device-item-button {
                 @include button-main;
@@ -141,6 +180,7 @@ $open-sans: "Open Sans", sans-serif;
                 }
                 &.save {
                     background-color: $greenButton;
+                    
                 }
                 &:hover {
                     transform: scale(1.1);

@@ -1,0 +1,56 @@
+@import "../../styles/mixin.scss";
+@import "../../styles/colors.scss";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+$break-small: 850px;
+$open-sans: "Open Sans", sans-serif;
+
+
+.contact-item {
+    font-size: 16px;
+    color: $lightGrey;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 0.1rem solid $whiteGrey2;
+    .contact-item-name {
+        margin: 1%;
+    }
+    .contact-item-buttons-container {
+        margin: 1%;
+        display: flex;
+        width: 30%;
+        font-size: 12px;
+        @media screen and (max-width: $break-small) {
+            width: 60%;
+        }
+        .contact-item-button {
+            display: block;
+            border: 0;
+            border-radius: 0.8rem;
+            font-family: $open-sans;
+            text-align: center;
+            text-transform: uppercase;
+            text-decoration: none;
+            box-shadow: 0px 0px 0.8rem rgba(50, 50, 50, 0.3);
+            font-size: 11px;
+            width: 45%;
+            margin: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+            transition: 0.3s transform ease-in-out, 0.2s font-weight ease-in-out;
+            color: white;
+            background-color: $whiteGrey2;
+            font-family: $open-sans;
+            &:hover {
+                transform: scale(1.1);
+                font-weight: bold;
+            }
+            &.delete {
+                background-color: $redButton;
+            }
+            &.save {
+                background-color: $returnButton;
+            }
+        }
+    }
+}
