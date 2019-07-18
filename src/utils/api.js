@@ -84,6 +84,18 @@ class Api {
         return this.api.post('devices/save', body);
     }
 
+    deviceBeep(imei, latitude, longitude, timezone, speed, pressed_button) {
+        let body = {
+            imei,
+            latitude,
+            longitude,
+            timezone,
+            speed,
+            pressed_button
+        }
+        return this.api.post('devices/beep', body);
+    }
+
     // ### Contacts ###
     contactsList(deviceId) {
         return this.api.get(`contacts/list/all?device_id=${deviceId}`);
