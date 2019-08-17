@@ -6,6 +6,7 @@ import Api from './utils/api'
 //### SCREENS ###
 import ScreenAuth from './screens/Auth/ScreenAuth'
 import ScreenMain from './screens/Main/ScreenMain'
+import ScreenBeepHelp from './screens/Map/ScreenBeepHelp'
 import Header from './components/Header/Header'
 
 import './App.scss';
@@ -118,6 +119,11 @@ class App extends Component {
 							onUserLogout={this.onUserLogout}
 							logged={this.state.logged}
 						/>
+						<PropsRoute
+							exact path={Routes.beepHelp}
+							component={ScreenBeepHelp}
+							logged={this.state.logged}
+						/>
 						<PrivateRoute
 							exact path={Routes.main}
 							component={ScreenMain}
@@ -128,6 +134,7 @@ class App extends Component {
 							component={ScreenMain}
 							logged={this.state.logged}
 						/>
+
 					</div>
 				</BrowserRouter>
 			</div>

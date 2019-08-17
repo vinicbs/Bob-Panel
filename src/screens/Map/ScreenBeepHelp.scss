@@ -1,0 +1,12 @@
+
+@import "../../styles/mixin.scss";
+@import "../../styles/colors.scss";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+$break-small: 850px;
+$open-sans: "Open Sans", sans-serif;
+.map-component {
+    width: 100%;
+    height: 90%;
+    font-family: $open-sans;
+    justify-content: initial;
+}

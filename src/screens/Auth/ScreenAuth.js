@@ -26,7 +26,8 @@ class ScreenAuth extends React.Component {
 
             email: '',
             password: '',
-            name: '',
+            first_name: '',
+            last_name: '',
             phone: '',
             country: 'BRA',
 
@@ -60,14 +61,14 @@ class ScreenAuth extends React.Component {
 
         let user = null;
         if (!this.state.email || !this.state.password
-            || !this.state.confirmPassword || !this.state.name
+            || !this.state.confirmPassword || !this.state.first_name || !this.state.last_name
             || !this.state.phone) { return toast.error('Preencha todos os campos') }
 
-        if (this.state.password !== this.state.confirmPassword) {return toast.error('Senhas não coincidem')}
+        if (this.state.password !== this.state.confirmPassword) { return toast.error('Senhas não coincidem') }
 
         this.setState({ loading: true });
         try {
-            user = await Api.register(this.state.email, this.state.password, this.state.name, this.state.phone, this.state.country);
+            user = await Api.register(this.state.email, this.state.password, this.state.first_name, this.state.last_name, this.state.phone, this.state.country);
             if (Utils.checkForErrors(this, user.data)) {
                 return this.setState({ loading: false });
             }
@@ -87,6 +88,10 @@ class ScreenAuth extends React.Component {
                 this.onFormSubmit(event);
             }
         }
+    }
+
+    handleFirstNameChange = () => {
+
     }
 
     render() {
@@ -172,8 +177,17 @@ class ScreenAuth extends React.Component {
                     <input
                         type='text'
                         className='input-field'
-                        value={this.state.name}
-                        onChange={(event) => this.setState({ name: event.target.value })}
+                        value={this.state.first_name}
+                        onChange={(event) => this.setState({ first_name: event.target.value })}
+                    />
+                </div>
+                <div className="input-section">
+                    <label className='input-label'>Sobrenome</label>
+                    <input
+                        type='text'
+                        className='input-field'
+                        value={this.state.last_name}
+                        onChange={(event) => this.setState({ last_name: event.target.value })}
                     />
                 </div>
                 {/* Email */}

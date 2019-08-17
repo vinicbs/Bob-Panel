@@ -1,8 +1,10 @@
 const routes = {
     main: '/',
+    beepHelp: '/help',
     login: '/login',
     contacts: '/contatos',
-    devices: '/dispositivos'
+    devices: '/dispositivos',
+    beeps: '/beeps'    
 }
 
 export default routes

@@ -41,11 +41,12 @@ class Api {
         return this.api.get(`users/signin?email=${email}&password=${password}`);
     }
 
-    register(email, password, name, phone, country) {
+    register(email, password, first_name, last_name, phone, country) {
         let body = {
             email,
             password,
-            name,
+            first_name,
+            last_name,
             phone,
             country
         }
@@ -94,6 +95,14 @@ class Api {
             pressed_button
         }
         return this.api.post('devices/beep', body);
+    }
+
+    deviceBeepHelpList(token) {
+        return this.api.get(`devices/beep/help?token=${token}`);
+    }
+
+    deviceBeepHelpLast(token) {
+        return this.api.get(`devices/beep/help/last?token=${token}`);
     }
 
     // ### Contacts ###
