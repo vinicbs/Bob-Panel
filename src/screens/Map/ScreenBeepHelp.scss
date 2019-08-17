@@ -4,9 +4,7 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 $break-small: 850px;
 $open-sans: "Open Sans", sans-serif;
-.map-component {
-    width: 100%;
-    height: 90%;
+.marker-info-window {
     font-family: $open-sans;
-    justify-content: initial;
+    text-align: initial;
 }
