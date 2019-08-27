@@ -115,10 +115,9 @@ class DeviceItem extends React.Component {
                         <div className='device-item-buttons-container'>
                             <Button
                                 className='device-item-button'
-                                as="input" type="submit" value="Histórico"
                                 as="input" type="submit" value="Beep"
                                 disabled={this.props.loading}
-                                onClick={this.handleShowDeviceHistory}
+                                onClick={this.handleBeepDevice}
                             />
                             <Button
                                 className='device-item-button'
@@ -278,6 +277,21 @@ class DeviceItem extends React.Component {
                 this.fetchContacts();
             }
             this.setState({ loading: false });
+        } catch (err) {
+            console.log(err);
+            toast.error('Aconteceu algo inesperado, recarregue a pagina');
+        }
+    }
+
+    handleBeepDevice = async () => {
+        this.setState({ loading: true });
+        try {
+            let beep = await Api.deviceBeep(this.state.imei, "30.0000", "30.0000", 3, 2.544, 1);
+            console.log(beep);
+            if (Utils.checkForErrors(this, beep.data)) { return; }
+
+            this.setState({ loading: false });
+            toast.success('Mensagem enviada');
         } catch (err) {
             console.log(err);
             toast.error('Aconteceu algo inesperado, recarregue a pagina');
