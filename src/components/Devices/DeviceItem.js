@@ -286,7 +286,7 @@ class DeviceItem extends React.Component {
     handleBeepDevice = async () => {
         this.setState({ loading: true });
         try {
-            let beep = await Api.deviceBeep(this.state.imei, "30.0000", "30.0000", 3, 2.544, 1);
+            let beep = await Api.deviceBeep(this.state.imei, "-30.042180", "-51.231688", 3, 2.544, 1);
             console.log(beep);
             if (Utils.checkForErrors(this, beep.data)) { return; }
 
