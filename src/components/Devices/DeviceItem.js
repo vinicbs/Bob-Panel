@@ -130,7 +130,6 @@ class DeviceItem extends React.Component {
                                 onClick={this.handleShowDelete}
                             />
                             <Button
-                                className='device-item-button save'
                                 as="input" type="submit" value="Salvar"
                                 disabled={this.props.loading}
                                 onClick={this.handleSaveDevice}
@@ -280,8 +279,6 @@ class DeviceItem extends React.Component {
     handleBeepDevice = async () => {
         this.setState({ loading: true });
         try {
-            let latitude = "";
-            let longitude = "";
             navigator.geolocation.getCurrentPosition(async (position) => {
                 let beep = await Api.deviceBeep(this.state.imei, position.coords.latitude, position.coords.longitude, 3, 0, 1);
                 if (Utils.checkForErrors(this, beep.data)) { return; }
