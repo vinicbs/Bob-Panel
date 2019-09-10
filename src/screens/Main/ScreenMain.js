@@ -84,7 +84,6 @@ class ScreenMain extends React.Component {
     }
 
     render() {
-        console.log(this.state.showNewDevice);
         const { loading } = this.state
         return (
             <BottomScrollListener onBottom={this.reachedBottomScroll} >

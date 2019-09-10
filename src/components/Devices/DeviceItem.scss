@@ -141,6 +141,15 @@ $open-sans: "Open Sans", sans-serif;
                 color: $lightGrey;
                 background-color: white;
                 font-family: $open-sans;
+
+                &.beep {
+                    background-color: $redButton;
+                    font-size: 3rem;
+                    color: white;
+                    border-radius: 100%;
+                    max-width: 200px;
+                    min-height: 200px;
+                }
                 &:hover {
                     transform: scale(1.1);
                     font-weight: bold;
@@ -180,7 +189,6 @@ $open-sans: "Open Sans", sans-serif;
                 }
                 &.save {
                     background-color: $greenButton;
-                    
                 }
                 &:hover {
                     transform: scale(1.1);

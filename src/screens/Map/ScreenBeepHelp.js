@@ -160,5 +160,5 @@ export class ScreenBeepHelp extends React.Component {
 }
 
 export default GoogleApiWrapper({
-	apiKey: ('AIzaSyBUx-4cyrgTorSvpsRqI6Uwk3LZXZlCD5k')
+	apiKey: (process.env.GOOGLE_API_KEY)
 })(ScreenBeepHelp)

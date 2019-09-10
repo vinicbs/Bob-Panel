@@ -10,3 +10,5 @@
 npm-debug.log*
 # local constants
 package-lock.json
+# environment variables
+.env

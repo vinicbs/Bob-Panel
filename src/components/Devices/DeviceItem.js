@@ -114,16 +114,10 @@ class DeviceItem extends React.Component {
                         </div>
                         <div className='device-item-buttons-container'>
                             <Button
-                                className='device-item-button'
+                                className='device-item-button beep'
                                 as="input" type="submit" value="Beep"
                                 disabled={this.props.loading}
                                 onClick={this.handleBeepDevice}
-                            />
-                            <Button
-                                className='device-item-button'
-                                as="input" type="submit" value="Pedidos de ajuda"
-                                disabled={this.props.loading}
-                                onClick={this.handleShowDeviceBeeps}
                             />
                         </div>
                     </div>
@@ -286,12 +280,15 @@ class DeviceItem extends React.Component {
     handleBeepDevice = async () => {
         this.setState({ loading: true });
         try {
-            let beep = await Api.deviceBeep(this.state.imei, "30.0000", "30.0000", 3, 2.544, 1);
-            console.log(beep);
-            if (Utils.checkForErrors(this, beep.data)) { return; }
+            let latitude = "";
+            let longitude = "";
+            navigator.geolocation.getCurrentPosition(async (position) => {
+                let beep = await Api.deviceBeep(this.state.imei, position.coords.latitude, position.coords.longitude, 3, 0, 1);
+                if (Utils.checkForErrors(this, beep.data)) { return; }
 
-            this.setState({ loading: false });
-            toast.success('Mensagem enviada');
+                this.setState({ loading: false });
+                toast.success('Mensagem enviada');
+            });
         } catch (err) {
             console.log(err);
             toast.error('Aconteceu algo inesperado, recarregue a pagina');
