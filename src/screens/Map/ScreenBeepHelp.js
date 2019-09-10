@@ -7,7 +7,7 @@ import qs from 'query-string'
 import Utils from '../../utils/utils';
 import { ToastContainer, toast } from 'react-toastify';
 import dateTime from 'date-and-time';
-import './ScreenBeepHelp.scss'
+import './ScreenBeepHelp.scss';
 
 export class ScreenBeepHelp extends React.Component {
 	constructor(props) {
@@ -160,5 +160,5 @@ export class ScreenBeepHelp extends React.Component {
 }
 
 export default GoogleApiWrapper({
-	apiKey: (process.env.GOOGLE_API_KEY)
+	apiKey: (process.env.REACT_APP_GOOGLE)
 })(ScreenBeepHelp)

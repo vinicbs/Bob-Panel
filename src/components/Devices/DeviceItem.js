@@ -130,6 +130,7 @@ class DeviceItem extends React.Component {
                                 onClick={this.handleShowDelete}
                             />
                             <Button
+                                className='device-item-button save'
                                 as="input" type="submit" value="Salvar"
                                 disabled={this.props.loading}
                                 onClick={this.handleSaveDevice}
